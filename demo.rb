@@ -20,10 +20,10 @@ puts names[0]
 decor=['Aparna',23,'Developer']
 puts decor
 
-decor1=[{
-    name:'Aparna',
-    age:23,
-    role:"Software E"
-},
-{name:'Justin',age:18}]
+decor1=[{ name:'Aparna',age:23,role:"Software E"}, {name:'Justin',age:18}]
 puts decor1
+ for person in decor1
+    if person[:age]==18
+        puts person
+    end
+end
