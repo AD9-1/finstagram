@@ -1,82 +1,32 @@
 <header><h1>Finstagram <%= @name2 %></h1></header>
 <main role="main">
-<% for post1 in @finstagram_posts %>
 
-    <article ="finstagram-post">
-        <div class="user-info">
+<% @finstagram_posts.each do |finstagram_post| %>
 
-          <img src="<%=post1[:avatar_url]%>" alt="<%=post1[:username]%>">
-
-          <h2><%=post1[:username]%></h2>
-          <h3><%=post1[:humanized_time_ago] %></h3>
-        </div>
-
-        <a class="photo" href="#">
-            <img src="<%= post1[:photo_url] %>" 
-            alt="finstagram post from <%= post1[:username] %>">
-            </a>
-           
-          <div class="action">
-          <%= post1[:like_count]%> 
-            <span class="comment-count"><%=post1[:comment_count]%></span>
-          </div>
-          <ul class="comments">
-            <li>
-              <p>
-         <%=post1[:comments][0][:username] %>:<%=post1[:comments][0][:text] %> 
-              </p>
-            </li>
-          </ul>
-      </article>
-    <%end%>
-
-    
-
-        #No need below lines
-
-
-      <article class="finstagram-post">
-        <div class="user-info">
-          <img src="https://live.staticflickr.com/65535/52358421348_f34c7996b1.jpg" alt="kirk_whalum">
-          <h2>kirk_whalum</h2>
-          <h3>1 hour ago</h3>
-        </div>
-        <a class="photo" href="#">
-          <img src="https://live.staticflickr.com/65535/52357237337_1cc718f6a7_4k.jpg" alt="finstagram post from kirk_whalum">
-        </a>
-        <div class="actions">
-          0 likes
-          <span class="comment-count">0 comments</span>
-        </div>
-        <ul class="comments">
-          <li>
-            <p>
-              kirk_whalum: #weekendvibes
-            </p>
-          </li>
-        </ul>
-      </article>
-
-      <article class="finstagram-post">
-        <div class="user-info">
-          <img src="https://live.staticflickr.com/65535/52358415933_0a0e6bc35f_3k.jpg" alt="marlin_peppa">
-          <h2>marlin_peppa</h2>
-          <h3>3 hours ago</h3>
-        </div>
-        <a class="photo" href="#">
-          <img src="https://live.staticflickr.com/65535/52358494794_f88b160d15_4k.jpg" alt="finstagram post from marlin_peppa">
-        </a>
-        <div class="actions">
-          <span>0 likes</span>
-          <span class="comment-count">0 comments</span>
-        </div>
-        <ul class="comments">
-          <li>
-            <p>
-              marlin_peppa: lunchtime! ;)
-            </p>
-          </li>
-        </ul>
-      </article>
+  
+  <article class="finstagram-post">
+    <div class="user-info">
+      <img src="<%= finstagram_post.user.avatar_url %>" alt="<%= finstagram_post.user.username %>">
+      <h2><%= finstagram_post.user.username %></h2>
+      <h3><%= finstagram_post.humanized_time_ago %></h3>
+    </div>
+    <a class="photo" href="#">
+      <img src="<%= finstagram_post.photo_url %>" alt="finstagram post from <%= finstagram_post.user.username %>">
+    </a>
+    <div class="actions">
+      <%= finstagram_post.like_count %> likes
+      <span class="comment-count"><%= finstagram_post.comment_count %> comments</span>
+    </div>
+    <ul class="comments">
+      <% finstagram_post.comments.each do |comment| %>
+        <li>
+          <p>
+            <%= comment.user.username %>: <%= comment.text %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </article>
+ 
 </main>
 </body>
