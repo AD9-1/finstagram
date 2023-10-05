@@ -11,7 +11,8 @@
       <h3><%= finstagram_post.humanized_time_ago %></h3>
     </div>
     <a class="photo" href="#">
-      <img src="<%= finstagram_post.photo_url %>" alt="finstagram post from <%= finstagram_post.user.username %>">
+      <img src="<%= finstagram_post.photo_url %>"
+       alt="finstagram post from <%= finstagram_post.user.username %>">
     </a>
     <div class="actions">
       <%= finstagram_post.like_count %> likes
@@ -27,6 +28,5 @@
       <% end %>
     </ul>
   </article>
- 
+ <% end %>
 </main>
-</body>
