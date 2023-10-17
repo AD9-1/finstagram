@@ -1,0 +1,4 @@
+
+<% if current_user %>
+<%= erb :'shared/finsta', locals: { finstagram_post: @finstagram_post , allow_new_comment: true } %>
+<%end%>
